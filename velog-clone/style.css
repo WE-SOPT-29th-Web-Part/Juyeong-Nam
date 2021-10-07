@@ -9,3 +9,15 @@
   /* Size */
   --post-width: 320px;
 }
+
+body {
+  margin: 0;
+}
+
+button,
+button:focus {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
