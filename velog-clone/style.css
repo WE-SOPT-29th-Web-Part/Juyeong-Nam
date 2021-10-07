@@ -1,0 +1,11 @@
+:root {
+  /* Color */
+  --white-color: #ffffff;
+  --black-color: #333a3f;
+  --blue-color: #045fd4;
+  --grey-dark-color: #868e97;
+  --grey-light-color: #b6bcc0;
+
+  /* Size */
+  --post-width: 320px;
+}
