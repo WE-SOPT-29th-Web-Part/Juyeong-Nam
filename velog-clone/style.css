@@ -31,3 +31,48 @@ button:focus {
   outline: none;
   background-color: transparent;
 }
+
+.header {
+  width: var(--max-width);
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--black-color);
+}
+
+.header__title {
+  font-size: 30px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__search {
+  margin-right: 12px;
+  font-size: 30px;
+}
+
+.header__add-post {
+  border: 1px solid var(--black-color);
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 0 15px;
+  background-color: var(--white-color);
+  height: 32px;
+  margin-right: 20px;
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
+}
+
+.header__profile img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100px;
+  margin-right: 4px;
+}
