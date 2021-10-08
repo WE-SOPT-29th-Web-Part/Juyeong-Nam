@@ -3,8 +3,8 @@
   --white-color: #ffffff;
   --black-color: #333a3f;
   --blue-color: #045fd4;
-  --grey-dark-color: #868e97;
-  --grey-light-color: #b6bcc0;
+  --grey-dark-color: #676d74;
+  --grey-light-color: #96989b;
 
   /* Size */
   --post-width: 320px;
@@ -143,4 +143,109 @@ button:focus {
 
 .nav__more {
   color: var(--grey-dark-color);
+}
+
+.posts {
+  width: 1056px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.post {
+  width: var(--post-width);
+  height: var(--post-height);
+  margin: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px 4px rgb(226, 226, 226);
+  color: var(--black-color);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.post__img-wrapper {
+  height: 167px;
+}
+
+.post__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px 4px 0 0;
+}
+
+.post__info-top {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 165px;
+}
+
+.post__title {
+  overflow: hidden;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin-bottom: 5px;
+}
+
+.post__description {
+  font-size: 0.875rem;
+  color: var(--grey-dark-color);
+  overflow: hidden;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.post__wrapper-date-comments {
+  color: var(--grey-light-color);
+  font-size: 0.75rem;
+}
+.post__date::after {
+  content: " ·";
+}
+
+.post__info-bottom {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  border-top: 1px solid rgb(240, 240, 240);
+}
+
+.post__wrapper-writer {
+  display: flex;
+  align-items: center;
+}
+
+.post__writer-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin-right: 8px;
+}
+
+.post__writer-name {
+  font-weight: bold;
+}
+
+.post__writer-name::before {
+  content: "by ";
+  color: var(--grey-light-color);
+  font-weight: normal;
+}
+
+.post__wrapper-like {
+  display: flex;
+  align-items: center;
+}
+
+.post__like-icon {
+  font-size: 0.8rem;
+  margin-right: 8px;
 }
