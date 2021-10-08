@@ -78,3 +78,7 @@ button:focus {
   border-radius: 100px;
   margin-right: 4px;
 }
+
+.header__profile span {
+  color: var(--grey-dark-color);
+}
