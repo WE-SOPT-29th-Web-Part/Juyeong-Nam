@@ -82,3 +82,64 @@ button:focus {
 .header__profile span {
   color: var(--grey-dark-color);
 }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: var(--max-width);
+  height: 48px;
+  margin-top: 24px;
+}
+
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.nav__trending,
+.nav__new,
+.nav__period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__trending,
+.nav__new {
+  font-size: 1.125rem;
+  width: 112px;
+  height: 100%;
+}
+
+.nav__trending > span,
+.nav__new > span {
+  margin-right: 8px;
+}
+
+.nav__trending {
+  color: var(--black-color);
+  border-bottom: 3px solid var(--black-color);
+}
+
+.nav__new {
+  color: var(--grey-dark-color);
+}
+
+.nav__period {
+  box-shadow: 0 0 4px 2px rgb(233, 233, 233);
+  background-color: var(--white-color);
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 96px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+.nav__period span {
+  font-size: 15px;
+}
+
+.nav__more {
+  color: var(--grey-dark-color);
+}
