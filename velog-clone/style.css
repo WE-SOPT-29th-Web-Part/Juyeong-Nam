@@ -63,6 +63,7 @@ button:focus {
   background-color: var(--white-color);
   height: 32px;
   margin-right: 20px;
+  font-weight: bold;
 }
 
 .header__profile {
