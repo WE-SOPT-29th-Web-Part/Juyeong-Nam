@@ -208,11 +208,14 @@ button:focus {
 
 .post__title-description .post__title {
   overflow: hidden;
-  line-height: 24px;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.post__title {
+  line-height: 24px;
   margin-bottom: 5px;
+  -webkit-line-clamp: 1;
 }
 
 .post__description {
