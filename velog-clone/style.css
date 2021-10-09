@@ -2,7 +2,6 @@
   /* Color */
   --white-color: #ffffff;
   --black-color: #333a3f;
-  --blue-color: #045fd4;
   --grey-dark-color: #676d74;
   --grey-light-color: #96989b;
 
@@ -169,7 +168,6 @@ button:focus {
 
 .post {
   width: var(--post-width);
-  /* height: var(--post-height); */
   margin: 16px;
   border-radius: 4px;
   box-shadow: 0 0 15px 4px rgb(226, 226, 226);
