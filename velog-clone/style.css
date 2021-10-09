@@ -53,8 +53,14 @@ button:focus {
 }
 
 .header__search {
-  margin-right: 12px;
+  margin-right: 10px;
   font-size: 30px;
+  border-radius: 50px;
+  padding: 6px;
+}
+
+.header__search:hover {
+  background-color: #f0f0f0;
 }
 
 .header__add-post {
@@ -66,6 +72,11 @@ button:focus {
   height: 32px;
   margin-right: 20px;
   font-weight: bold;
+}
+
+.header__add-post:hover {
+  background-color: var(--black-color);
+  color: var(--white-color);
 }
 
 .header__profile {
@@ -137,6 +148,10 @@ button:focus {
   border-radius: 5px;
 }
 
+.nav__period:hover {
+  color: var(--grey-dark-color);
+}
+
 .nav__period span {
   font-size: 15px;
 }
@@ -162,6 +177,12 @@ button:focus {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  transition: box-shadow 0.25s ease-in, transform 0.25s ease-in;
+}
+
+.post:hover {
+  transform: translate(0, -5px);
+  box-shadow: 0 0 15px 4px rgb(207, 207, 207);
 }
 
 .post__img-wrapper {
