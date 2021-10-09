@@ -154,7 +154,7 @@ button:focus {
 
 .post {
   width: var(--post-width);
-  height: var(--post-height);
+  /* height: var(--post-height); */
   margin: 16px;
   border-radius: 4px;
   box-shadow: 0 0 15px 4px rgb(226, 226, 226);
@@ -165,7 +165,8 @@ button:focus {
 }
 
 .post__img-wrapper {
-  height: 167px;
+  height: 100%;
+  width: 100%;
 }
 
 .post__img {
@@ -180,10 +181,11 @@ button:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 165px;
+  min-height: 165px;
+  flex: 1 1 0%;
 }
 
-.post__title {
+.post__title-description .post__title {
   overflow: hidden;
   line-height: 24px;
   display: -webkit-box;
@@ -248,4 +250,34 @@ button:focus {
 .post__like-icon {
   font-size: 0.8rem;
   margin-right: 8px;
+}
+
+@media screen and (max-width: 1042px) {
+  .header,
+  .nav,
+  .posts {
+    width: calc(100% - 2rem);
+  }
+
+  .post {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 753px) {
+  .header,
+  .nav,
+  .posts {
+    width: calc(100% - 2rem);
+  }
+
+  .post {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .header__add-post {
+    display: none;
+  }
 }
