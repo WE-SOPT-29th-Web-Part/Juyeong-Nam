@@ -77,11 +77,11 @@ button {
   flex-grow: 1;
   font-family: "GowunDodum-Regular";
 }
-
+/* 
 .todos__today,
 .todos__tomorrow {
   width: 100%;
-}
+} */
 
 .todos__today,
 .todos__tomorrow {
@@ -89,6 +89,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 0px;
+  visibility: hidden;
+  transition: all ease-in 300ms;
 }
 
 .todos__items {
@@ -144,4 +147,10 @@ button {
   background-color: transparent;
   margin-left: 10px;
   font-size: 20px;
+}
+
+.todo.open {
+  width: 100%;
+  visibility: visible;
+  transition: all ease-in 300ms;
 }
