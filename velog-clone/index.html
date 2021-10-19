@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>velog by Juyeong</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__title">velog</div>
+      <div class="header__nav">
+        <button class="header__search material-icons outlined">search</button>
+        <button class="header__add-post">새 글 작성</button>
+        <div class="header__profile">
+          <button class="header__profile">
+            <img src="img/profile.png" alt="" />
+            <span class="material-icons outlined"> expand_more </span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <nav class="nav">
+      <div class="nav__wrapper">
+        <button class="nav__trending">
+          <span class="material-icons outlined"> trending_up </span>
+          <span>트렌딩</span>
+        </button>
+        <button class="nav__new">
+          <span class="material-icons outlined"> schedule </span>
+          <span>최신</span>
+        </button>
+        <button class="nav__period">
+          <span>이번 주</span>
+          <span class="material-icons outlined"> expand_more </span>
+        </button>
+      </div>
+      <button class="nav__more material-icons outlined">more_vert</button>
+    </nav>
+    <section class="posts">
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">[SOPT] velog 클론 코딩 과제 1</h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다. 그리고 이건 좀 길게 해볼게요. 왜냐면
+              -webkit-line-clamp 설정 해주려구요. 아마 더 길게 써야할 것 같은데
+              아무 말이나 해보겠어요. 배고프다. 이따 뭐 먹지? 직전 커밋 취소는
+              git reset HEAD^ 두 번 했다 한 번은 커밋 메시지 잘못 써서, 한 번은
+              add를 쓸데없는 것까지 해서 오 이정도면 충분히 긴 것 같네여
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 2 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 3 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">[SOPT] velog 클론 코딩 과제 4</h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 5 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 6 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 7 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">[SOPT] velog 클론 코딩 과제 8</h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">[SOPT] velog 클론 코딩 과제 9</h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 10 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="post__img-wrapper">
+          <img class="post__img" src="img/cover.png" />
+        </div>
+        <div class="post__info-top">
+          <div class="post__wrapper-title-description">
+            <h4 class="post__title">
+              [SOPT] velog 클론 코딩 과제 11 근데 이제 제목을 좀 길게
+              만들어보려고 하는
+            </h4>
+            <p class="post__description">
+              이 과제는 첫 번째 세미나 과제입니다. 이 과제가 끝나면 개구리랑
+              접시 게임을 해야합니다.
+            </p>
+          </div>
+          <div class="post__wrapper-date-comments">
+            <span class="post__date">2021년 10월 7일</span>
+            <span class="post__comments">5개의 댓글</span>
+          </div>
+        </div>
+        <div class="post__info-bottom">
+          <div class="post__wrapper-writer">
+            <img class="post__writer-img" src="img/profile.png" />
+            <span class="post__writer-name">jynam</span>
+          </div>
+          <div class="post__wrapper-like">
+            <span class="post__like-icon material-icons outlined">
+              favorite
+            </span>
+            <span class="post__like-num">10</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </body>
+</html>
