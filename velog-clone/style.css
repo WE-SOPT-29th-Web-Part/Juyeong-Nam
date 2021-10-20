@@ -313,6 +313,38 @@ li {
   margin-right: 8px;
 }
 
+.post__modal {
+  width: var(--post-width);
+  margin: 16px;
+  border-radius: 4px;
+  color: var(--black-color);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: var(--white-color);
+}
+
+.post__modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post__modal-btn,
+.post__modal-btn:active {
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
 @media screen and (max-width: 1042px) {
   .header,
   .nav,
