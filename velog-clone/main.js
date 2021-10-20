@@ -1,3 +1,5 @@
+"use strict"
+
 const period = document.querySelector(".nav__period");
 const dropdown = document.querySelector(".nav__dropdown");
 const posts = document.querySelector(".posts");
