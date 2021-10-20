@@ -37,6 +37,10 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   width: var(--max-width);
   height: 64px;
@@ -73,8 +77,10 @@ li {
   padding: 0 15px;
   background-color: var(--white-color);
   height: 32px;
+  line-height: 32px;
   margin-right: 20px;
   font-weight: bold;
+  color: var(--black-color);
 }
 
 .header__add-post:hover {
