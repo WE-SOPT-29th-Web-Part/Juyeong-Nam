@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -39,6 +40,12 @@
           <span>이번 주</span>
           <span class="material-icons outlined"> expand_more </span>
         </button>
+        <ul class="nav__dropdown">
+          <li class="nav__dropdown-today">오늘</li>
+          <li class="nav__dropdown-week active">이번 주</li>
+          <li class="nav__dropdown-month">이번 달</li>
+          <li class="nav__dropdown-year">올해</li>
+        </ul>
       </div>
       <button class="nav__more material-icons outlined">more_vert</button>
     </nav>

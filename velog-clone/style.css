@@ -33,6 +33,10 @@ button:focus {
   color: inherit;
 }
 
+li {
+  list-style: none;
+}
+
 .header {
   width: var(--max-width);
   height: 64px;
@@ -105,6 +109,7 @@ button:focus {
 .nav__wrapper {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .nav__trending,
@@ -137,7 +142,7 @@ button:focus {
 }
 
 .nav__period {
-  box-shadow: 0 0 4px 2px rgb(233, 233, 233);
+  box-shadow: 0 0 4px 1px rgb(240, 239, 239);
   background-color: var(--white-color);
   padding: 0 8px;
   display: flex;
@@ -152,11 +157,45 @@ button:focus {
 }
 
 .nav__period span {
-  font-size: 15px;
+  font-size: 0.875rem;
 }
 
 .nav__more {
   color: var(--grey-dark-color);
+}
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0px;
+  margin-top: 8px;
+  z-index: 2;
+  font-size: 14px;
+  visibility: hidden;
+  background-color: var(--white-color);
+  box-shadow: 1px 0 6px 1px rgb(216, 216, 216);
+}
+
+.nav__dropdown.visible {
+  visibility: visible;
+}
+
+.nav__dropdown li {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(241, 243, 245);
+  width: 192px;
+  height: 43px;
+  color: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.nav__dropdown li:hover {
+  background-color: #f0f0f391;
+}
+
+.nav__dropdown li.active {
+  color: rgb(18, 184, 134);
 }
 
 .posts {
