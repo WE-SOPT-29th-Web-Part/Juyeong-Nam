@@ -16,7 +16,6 @@ function onClickDropdown(e) {
 
 function onClickPost(e) {
   const clickedPost = e.target.closest("article");
-  // console.dir(clickedPost);
 
   const background = document.createElement("div");
   const modal = document.createElement("article");
