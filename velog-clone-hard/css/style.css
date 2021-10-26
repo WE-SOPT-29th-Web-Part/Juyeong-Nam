@@ -206,8 +206,18 @@ a {
 
 .main {
   position: relative;
-  width: 1056px;
   overflow-x: hidden;
+  width: 1056px;
+}
+
+.main__slide-btns {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
 }
 
 .main__slide-btns > button {
@@ -223,7 +233,6 @@ a {
   display: flex;
   margin-top: 16px;
   transition: 0.3s ease-out;
-  /* margin-left: -352px; */
 }
 
 .post {
@@ -291,6 +300,7 @@ a {
   color: var(--grey-light-color);
   font-size: 0.75rem;
 }
+
 .post__date::after {
   content: " ·";
 }
@@ -367,20 +377,10 @@ a {
   padding: 10px;
 }
 
-.main__slide-btns {
-  position: absolute;
-  left: 0;
-  top: 45%;
-  width: 1056px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 2;
-}
-
 @media screen and (max-width: 1042px) {
   .header,
   .nav,
-  .posts {
+  .main {
     width: calc(100% - 2rem);
   }
 
@@ -392,7 +392,7 @@ a {
 @media screen and (max-width: 753px) {
   .header,
   .nav,
-  .posts {
+  .main {
     width: calc(100% - 2rem);
   }
 

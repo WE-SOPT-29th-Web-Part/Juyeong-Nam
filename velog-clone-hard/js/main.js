@@ -1,21 +1,26 @@
-"use strict"
+"use strict";
 
 const period = document.querySelector(".nav__period");
 const dropdown = document.querySelector(".nav__dropdown");
 const posts = document.querySelector(".posts");
-// const main = document.querySelector(".main");
 const slideLeftBtn = document.querySelector(".main__slide-btn-left");
 const slideRightBtn = document.querySelector(".main__slide-btn-right");
+// const main = document.querySelector(".main");
 
-let currentSlideNum = 1; 
-const slideNum = Math.ceil(posts.children.length / 3);
+let startPost = 0;
+const postsNum = posts.children.length;
+// let slideNum = Math.ceil(posts.children.length / 3);
+
+let postsWidth = 1056;
 
 function onClickPeriod() {
   dropdown.classList.toggle("visible");
 }
 
 function onClickDropdown(e) {
-  dropdown.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+  dropdown
+    .querySelectorAll("li")
+    .forEach((li) => li.classList.remove("active"));
   e.target.classList.add("active");
   period.querySelector("span").innerText = e.target.innerHTML;
 }
@@ -26,7 +31,7 @@ function onClickPost(e) {
   const background = document.createElement("div");
   const modal = document.createElement("article");
   const modalBtn = document.createElement("button");
-  
+
   background.setAttribute("class", "post__modal-background");
   modal.setAttribute("class", "post__modal");
   modalBtn.setAttribute("class", "post__modal-btn material-icons");
@@ -44,15 +49,51 @@ function onClickPost(e) {
   });
 }
 
+function isEndSlide() {
+  const lastPage = Math.floor(postsNum / shownPostNum);
+  if (Math.floor((startPost + 1) / shownPostNum) === lastPage) return true;
+  return false;
+}
+
+function getPostWidth() {
+  return Number(window.getComputedStyle(posts).width.slice(0, -2));
+}
+
+function movePost() {
+  const currentPage = Math.floor(startPost / shownPostNum);
+  posts.style.marginLeft = `-${getPostWidth() * currentPage}px`;
+}
+
 function onClickSlide(e) {
-  if(e.target === slideLeftBtn) {
-    if(currentSlideNum === 1) return;
-    currentSlideNum--;
-  }else if(e.target === slideRightBtn) {
-    if(currentSlideNum === slideNum) return;
-    currentSlideNum++;
+  if (e.target === slideLeftBtn) {
+    if (startPost === 0) return;
+    startPost -= shownPostNum;
+    console.log("startPost", startPost);
+    console.log("shownPostNum", shownPostNum);
+  } else if (e.target === slideRightBtn) {
+    if (isEndSlide()) return;
+    startPost += shownPostNum;
+    console.log("startPost", startPost);
+    console.log("shownPostNum", shownPostNum);
   }
-  posts.style.marginLeft = `-${1056 * (currentSlideNum-1)}px`;
+  movePost();
+  console.log("getPostWidth", getPostWidth());
+}
+
+function onResizeWindow() {
+  if (window.innerWidth <= 753) {
+    shownPostNum = 1;
+    movePost();
+    console.log("resize", shownPostNum);
+  } else if (window.innerWidth <= 1042) {
+    shownPostNum = 2;
+    movePost();
+    console.log("resize", shownPostNum);
+  } else {
+    shownPostNum = 3;
+    movePost();
+    console.log("resize", shownPostNum);
+  }
 }
 
 period.addEventListener("click", onClickPeriod);
@@ -63,3 +104,13 @@ posts.addEventListener("click", onClickPost);
 
 slideLeftBtn.addEventListener("click", onClickSlide);
 slideRightBtn.addEventListener("click", onClickSlide);
+
+let shownPostNum;
+if (window.innerWidth <= 753) {
+  shownPostNum = 1;
+} else if (window.innerWidth <= 1042) {
+  shownPostNum = 2;
+} else {
+  shownPostNum = 3;
+}
+window.addEventListener("resize", onResizeWindow);
