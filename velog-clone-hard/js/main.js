@@ -5,11 +5,9 @@ const dropdown = document.querySelector(".nav__dropdown");
 const posts = document.querySelector(".posts");
 const slideLeftBtn = document.querySelector(".main__slide-btn-left");
 const slideRightBtn = document.querySelector(".main__slide-btn-right");
-// const main = document.querySelector(".main");
 
 let startPost = 0;
 const postsNum = posts.children.length;
-// let slideNum = Math.ceil(posts.children.length / 3);
 
 let postsWidth = 1056;
 
@@ -68,31 +66,23 @@ function onClickSlide(e) {
   if (e.target === slideLeftBtn) {
     if (startPost === 0) return;
     startPost -= shownPostNum;
-    console.log("startPost", startPost);
-    console.log("shownPostNum", shownPostNum);
   } else if (e.target === slideRightBtn) {
     if (isEndSlide()) return;
     startPost += shownPostNum;
-    console.log("startPost", startPost);
-    console.log("shownPostNum", shownPostNum);
   }
   movePost();
-  console.log("getPostWidth", getPostWidth());
 }
 
 function onResizeWindow() {
   if (window.innerWidth <= 753) {
     shownPostNum = 1;
     movePost();
-    console.log("resize", shownPostNum);
   } else if (window.innerWidth <= 1042) {
     shownPostNum = 2;
     movePost();
-    console.log("resize", shownPostNum);
   } else {
     shownPostNum = 3;
     movePost();
-    console.log("resize", shownPostNum);
   }
 }
 
