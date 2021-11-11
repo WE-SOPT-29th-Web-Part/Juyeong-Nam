@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Nav = () => {
+const Nav = ({setIsToday, setIsTomorrow}) => {
   return (
     <StyleNav>
-      <button>TODAY</button>
-      <button>TOMORROW</button>
-      <button>ALL</button>
+      <button onClick={() => {setIsToday(true); setIsTomorrow(false);}} >TODAY</button>
+      <button onClick={() => {setIsToday(false); setIsTomorrow(true);}}>TOMORROW</button>
+      <button onClick={() => {setIsToday(true); setIsTomorrow(true);}}>ALL</button>
     </StyleNav>
   );
 };
