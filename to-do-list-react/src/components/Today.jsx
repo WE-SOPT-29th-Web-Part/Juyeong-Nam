@@ -1,21 +1,22 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import Input from './Input';
+import TodayInput from './TodayInput';
 
-const Today = ({isToday}) => {
+const Today = ({isToday, todayTodos, setTodayTodos}) => {
   return (
-    <Todos isToday={isToday}>
+    <StyleToday isToday={isToday}>
       <h1>TODAY</h1>
       <ul>
+        {todayTodos}
       </ul>
-      <Input />
-    </Todos>
+      <TodayInput todayTodos={todayTodos} setTodayTodos={setTodayTodos} />
+    </StyleToday>
   );
 };
 
 export default Today;
 
-const Todos = styled.section`
+const StyleToday = styled.section`
   border-right: 1px solid black;
   display: flex;
   flex-direction: column;

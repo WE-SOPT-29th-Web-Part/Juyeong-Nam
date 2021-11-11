@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Today from './Today';
 import Tomorrow from './Tomorrow';
 import styled from 'styled-components';
 
 const Main = ({isToday, isTomorrow}) => {
+  const [todayTodos, setTodayTodos] = useState([]);
+  const [tomorrowTodos, setTomorrowTodos] = useState([]);
   return (
     <StyleMain>
-      <Today isToday={isToday} />
-      <Tomorrow isTomorrow={isTomorrow} />
+      <Today isToday={isToday} todayTodos={todayTodos} setTodayTodos={setTodayTodos} />
+      <Tomorrow isTomorrow={isTomorrow} tomorrowTodos={tomorrowTodos} setTomorrowTodos={setTomorrowTodos} />
     </StyleMain>
   );
 };

@@ -1,21 +1,22 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import Input from './Input';
+import TomorrowInput from './TomorrowInput';
 
-const Tomorrow = ({isTomorrow}) => {
+const Tomorrow = ({isTomorrow, tomorrowTodos, setTomorrowTodos}) => {
   return (
-    <Todos isTomorrow={isTomorrow}>
+    <StyleTomorrow isTomorrow={isTomorrow}>
       <h1>TOMORROW</h1>
       <ul>
+        {tomorrowTodos}
       </ul>
-      <Input />
-    </Todos>
+      <TomorrowInput tomorrowTodos={tomorrowTodos} setTomorrowTodos={setTomorrowTodos} />
+    </StyleTomorrow>
   );
 };
 
 export default Tomorrow;
 
-const Todos = styled.section`
+const StyleTomorrow = styled.section`
   border-right: 1px solid black;
   display: flex;
   flex-direction: column;
