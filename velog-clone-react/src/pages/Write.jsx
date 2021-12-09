@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import ArticleBody from '../components/write/ArticleBody';
-import ArticleFooter from '../components/write/ArticleFooter';
-import ArticleTags from '../components/write/ArticleTags';
-import ArticleTitle from '../components/write/ArticleTitle';
-import { client } from '../libs/api';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import styled from "styled-components";
+import ArticleBody from "../components/write/ArticleBody";
+import ArticleFooter from "../components/write/ArticleFooter";
+import ArticleTags from "../components/write/ArticleTags";
+import ArticleTitle from "../components/write/ArticleTitle";
+import { client } from "../libs/api";
+import { Link } from "react-router-dom";
+import PublishScreen from "../components/write/PublishScreen";
 
 const Write = () => {
-
   const [articleData, setArticleData] = useState({
     id: "",
     title: "",
@@ -17,33 +17,58 @@ const Write = () => {
     series: "",
     tags: [],
     thumbnail: "",
-    date: ""
+    date: "",
   });
+  const [isPublishOpened, setIsPublishOpened] = useState(false);
 
   const createArticle = async () => {
-    const {data} = await client.get('/article');
+    const { data } = await client.get("/article");
     const id = data.length + 1;
     const now = new Date();
-    const date = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일`;
-    await client.post('/article', {...articleData, id, date, summary: "요약입니다."});
-  }
+    const date = `${now.getFullYear()}년 ${
+      now.getMonth() + 1
+    }월 ${now.getDate()}일`;
+    await client.post("/article", {
+      ...articleData,
+      id,
+      date,
+      summary: "요약입니다.",
+    });
+  };
 
   const handlePost = async () => {
     await createArticle();
   };
 
+  const movePublishScreen = () => {
+    if (isPublishOpened) {
+      setIsPublishOpened(false);
+    } else {
+      setIsPublishOpened(true);
+    }
+  };
+
   return (
     <StyledWrite>
-      <ArticleTitle setArticleData={setArticleData} />
-      <Line />
-      <ArticleTags tags={articleData.tags} articleData={articleData} setArticleData={setArticleData} />
-      <ArticleBody setArticleData={setArticleData} />
-      <ArticleFooter >
-        <Link to="/" >
-          <button onClick={handlePost}>출간하기</button>
-        </Link>
-      </ArticleFooter>
-      
+      <div>
+        <ArticleTitle setArticleData={setArticleData} />
+        <Line />
+        <ArticleTags
+          tags={articleData.tags}
+          articleData={articleData}
+          setArticleData={setArticleData}
+        />
+        <ArticleBody setArticleData={setArticleData} />
+        <ArticleFooter>
+          {/* <Link to="/"> */}
+          <button onClick={movePublishScreen}>출간하기</button>
+          {/* </Link> */}
+        </ArticleFooter>
+      </div>
+      <PublishScreen
+        isPublishOpened={isPublishOpened}
+        movePublishScreen={movePublishScreen}
+      />
     </StyledWrite>
   );
 };
@@ -56,6 +81,7 @@ const StyledWrite = styled.div`
   padding-top: 32px;
   background-color: white;
   overflow: hidden;
+  position: relative;
 `;
 
 const Line = styled.div`
