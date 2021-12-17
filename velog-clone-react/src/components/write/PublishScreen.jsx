@@ -1,23 +1,52 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as AddImageIcon } from "../../asset/icons/add_image.svg";
+import { imageClient } from "../../libs/api";
 
-export default function PublishScreen({ isPublishOpened, movePublishScreen }) {
-  const [isImageSelected, setIsImageSelected] = useState(false);
-  const [imageSrc, setImageSrc] = useState("");
-  const handleFileInput = (e) => {
-    if (e.target.files && e.target.files[0]) {
+export default function PublishScreen({
+  isPublishOpened,
+  movePublishScreen,
+  createArticle,
+  onChange,
+  summary,
+  thumbnail,
+  id,
+}) {
+  const [isImageSelected, setIsImageSelected] = useState(
+    thumbnail ? true : false
+  );
+  const [imageSrc, setImageSrc] = useState(thumbnail ? thumbnail : "");
+  const handleFileInput = async (e) => {
+    const imageFile = e.target.files[0];
+    if (e.target.files && imageFile) {
       const reader = new FileReader();
       reader.onload = (e) => {
         setIsImageSelected(true);
         setImageSrc(e.target.result);
       };
-      reader.readAsDataURL(e.target.files[0]);
+      reader.readAsDataURL(imageFile);
+      const formData = new FormData();
+      formData.append("file", imageFile);
+      const imageResponse = await imageClient.post("", formData);
+      const imageUrl = imageResponse.data.url;
+      onChange("thumbnail", imageUrl);
     }
+  };
+  const publish = async () => {
+    await createArticle();
+  };
+  const deleteThumbnail = () => {
+    setIsImageSelected(false);
+    onChange("thumbnail", "");
   };
   return (
     <StyledPublishScreen isPublishOpened={isPublishOpened}>
       <StyledTitle>포스트 미리보기</StyledTitle>
+      <StyledImageEdit isImageSelected={isImageSelected}>
+        <label htmlFor="file">재업로드</label>
+        <span>·</span>
+        <button onClick={deleteThumbnail}>삭제</button>
+      </StyledImageEdit>
       <StyledThumbnail>
         <StyledAddImage>
           <AddImageIcon />
@@ -32,12 +61,18 @@ export default function PublishScreen({ isPublishOpened, movePublishScreen }) {
           <StyledThumbnailImage src={imageSrc} />
         </StyledThumbnailImageWrapper>
       </StyledThumbnail>
-      <StyledSummary placeholder="당신의 포스트를 짧게 소개해보세요." />
+      <StyledSummary
+        value={summary}
+        onChange={(e) => onChange("summary", e.target.value)}
+        placeholder="당신의 포스트를 짧게 소개해보세요."
+      />
       <StyledButtons>
-        <StyledButton color="rgb(134, 142, 150)" onClick={movePublishScreen}>
+        <StyledButton onClick={movePublishScreen} color="rgb(134, 142, 150)">
           취소
         </StyledButton>
-        <StyledButton color="rgb(18, 184, 134)">출간하기</StyledButton>
+        <StyledButton onClick={publish} color="rgb(18, 184, 134)">
+          출간하기
+        </StyledButton>
       </StyledButtons>
     </StyledPublishScreen>
   );
@@ -50,12 +85,15 @@ const StyledPublishScreen = styled.div`
   position: absolute;
   top: ${(props) => (props.isPublishOpened ? "0" : "100%")};
   left: 0;
-  transition: all 0.125s ease-in 0s;
+  transition: all 0.2s ease-in 0s;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  & > * {
+    width: 352px;
+  }
 `;
 
 const StyledTitle = styled.h3`
@@ -67,12 +105,38 @@ const StyledTitle = styled.h3`
   width: 352px;
 `;
 
+const StyledImageEdit = styled.div`
+  display: ${(props) => (props.isImageSelected ? "flex" : "none")};
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  & > * {
+    font-size: 1rem;
+    color: rgb(134, 142, 150);
+  }
+  & > label {
+    cursor: pointer;
+  }
+  & > button {
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0px;
+  }
+  & > *:first-child,
+  & > *:last-child {
+    text-decoration: underline;
+  }
+  & > span {
+    margin: 0 8px;
+  }
+`;
+
 const StyledThumbnail = styled.div`
   position: relative;
 `;
 
 const StyledAddImage = styled.div`
-  width: 352px;
+  width: 100%;
   height: 194px;
   background-color: rgb(234, 236, 240);
   display: flex;
@@ -110,7 +174,7 @@ const StyledThumbnailImageWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 352px;
+  width: 100%;
   height: 194px;
   display: ${(props) => (props.isImageSelected ? "block" : "none")};
 `;
@@ -124,7 +188,6 @@ const StyledThumbnailImage = styled.img`
 const StyledSummary = styled.textarea`
   margin-top: 24px;
   resize: none;
-  width: 352px;
   border: none;
   outline: none;
   box-shadow: rgb(0 0 0 / 3%) 0px 0px 4px 0px;
@@ -135,7 +198,6 @@ const StyledSummary = styled.textarea`
 `;
 
 const StyledButtons = styled.div`
-  width: 352px;
   display: flex;
   justify-content: center;
   margin-top: 24px;

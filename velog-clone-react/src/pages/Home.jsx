@@ -14,8 +14,8 @@ const Home = () => {
       <Profile />
       <HomeNav />
       <Routes>
-        <Route path="/" element={<ArticlesContainer />} />
         <Route path="/series" element={<SeriesCategory />} />
+        <Route path="/" element={<ArticlesContainer />} />
       </Routes>
     </StyledHome>
   );

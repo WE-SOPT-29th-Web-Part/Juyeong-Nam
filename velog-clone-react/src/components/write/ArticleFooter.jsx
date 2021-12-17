@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const ArticleFooter = ({children}) => {
+const ArticleFooter = ({ onClick }) => {
   return (
-    <Footer>
-      {children}
-    </Footer>
+    <StyledArticleFooter>
+      <button onClick={onClick}>출간하기</button>
+    </StyledArticleFooter>
   );
 };
 
 export default ArticleFooter;
 
-const Footer = styled.footer`
+const StyledArticleFooter = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -30,4 +30,3 @@ const Footer = styled.footer`
     color: white;
   }
 `;
-
