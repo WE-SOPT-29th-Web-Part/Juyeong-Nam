@@ -16,6 +16,8 @@ export default function PublishScreen({
     thumbnail ? true : false
   );
   const [imageSrc, setImageSrc] = useState(thumbnail ? thumbnail : "");
+  const [isMaxLength, setIsMaxLength] = useState(false);
+
   const handleFileInput = async (e) => {
     const imageFile = e.target.files[0];
     if (e.target.files && imageFile) {
@@ -38,6 +40,13 @@ export default function PublishScreen({
   const deleteThumbnail = () => {
     setIsImageSelected(false);
     onChange("thumbnail", "");
+  };
+  const checkInputLength = (e) => {
+    if (e.target.value.length > 150) {
+      setIsMaxLength(true);
+    } else {
+      setIsMaxLength(false);
+    }
   };
   return (
     <StyledPublishScreen isPublishOpened={isPublishOpened}>
@@ -63,8 +72,13 @@ export default function PublishScreen({
       </StyledThumbnail>
       <StyledSummary
         value={summary}
-        onChange={(e) => onChange("summary", e.target.value)}
+        onChange={(e) => {
+          onChange("summary", e.target.value);
+          checkInputLength(e);
+        }}
         placeholder="당신의 포스트를 짧게 소개해보세요."
+        maxLength="150"
+        isMaxLength={isMaxLength}
       />
       <StyledButtons>
         <StyledButton onClick={movePublishScreen} color="rgb(134, 142, 150)">
@@ -195,6 +209,7 @@ const StyledSummary = styled.textarea`
   font-size: 0.875rem;
   height: 7.375rem;
   padding: 0.75rem 1rem;
+  color: ${(props) => (props.isMaxLength ? "red" : "inherit")};
 `;
 
 const StyledButtons = styled.div`
