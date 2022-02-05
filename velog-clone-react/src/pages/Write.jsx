@@ -1,49 +1,93 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import ArticleBody from '../components/write/ArticleBody';
-import ArticleFooter from '../components/write/ArticleFooter';
-import ArticleTags from '../components/write/ArticleTags';
-import ArticleTitle from '../components/write/ArticleTitle';
-import { client } from '../libs/api';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import styled from "styled-components";
+import ArticleBody from "../components/write/ArticleBody";
+import ArticleFooter from "../components/write/ArticleFooter";
+import ArticleTags from "../components/write/ArticleTags";
+import ArticleTitle from "../components/write/ArticleTitle";
+import { client } from "../libs/api";
+import PublishScreen from "../components/write/PublishScreen";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Write = () => {
-
-  const [articleData, setArticleData] = useState({
-    id: "",
-    title: "",
-    body: "",
-    summary: "",
-    series: "",
-    tags: [],
-    thumbnail: "",
-    date: ""
-  });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const article = location.state;
+  const [articleData, setArticleData] = useState(
+    article ?? {
+      title: "",
+      body: "",
+      summary: "",
+      series: "",
+      tags: [],
+      thumbnail: "",
+    }
+  );
+  const [isPublishOpened, setIsPublishOpened] = useState(false);
 
   const createArticle = async () => {
-    const {data} = await client.get('/article');
-    const id = data.length + 1;
-    const now = new Date();
-    const date = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일`;
-    await client.post('/article', {...articleData, id, date, summary: "요약입니다."});
-  }
+    if (article) {
+      await client.patch(`article/${article.id}`, articleData);
+      navigate(`/article/${article.id}`, { state: articleData });
+      return;
+    }
+    await client.post("/article", {
+      ...articleData,
+    });
+    navigate("/");
+  };
 
-  const handlePost = async () => {
-    await createArticle();
+  const movePublishScreen = () => {
+    if (isPublishOpened) {
+      setIsPublishOpened(false);
+    } else {
+      setIsPublishOpened(true);
+    }
+  };
+
+  const handleArticleData = (key, value) => {
+    setArticleData((articleData) => ({
+      ...articleData,
+      [key]: value,
+    }));
+  };
+
+  const handleTag = (e) => {
+    if (e.key === "Enter") {
+      const tempData = { ...articleData };
+      tempData.tags = [...tempData.tags, e.target.value];
+      setArticleData(tempData);
+      e.target.value = "";
+    }
+  };
+
+  const deleteTag = (e) => {
+    const tempData = { ...articleData };
+    tempData.tags = tempData.tags.filter((tag) => tag !== e.target.innerText);
+    setArticleData(tempData);
   };
 
   return (
     <StyledWrite>
-      <ArticleTitle setArticleData={setArticleData} />
-      <Line />
-      <ArticleTags tags={articleData.tags} articleData={articleData} setArticleData={setArticleData} />
-      <ArticleBody setArticleData={setArticleData} />
-      <ArticleFooter >
-        <Link to="/" >
-          <button onClick={handlePost}>출간하기</button>
-        </Link>
-      </ArticleFooter>
-      
+      <div>
+        <ArticleTitle onChange={handleArticleData} title={articleData.title} />
+        <Line />
+        <ArticleTags
+          tags={articleData.tags}
+          onKeypress={handleTag}
+          onClick={deleteTag}
+        />
+        <ArticleBody body={articleData.body} onChange={handleArticleData} />
+        <ArticleFooter onClick={movePublishScreen} />
+      </div>
+      <PublishScreen
+        summary={articleData.summary}
+        thumbnail={articleData.thumbnail}
+        id={articleData.id}
+        isPublishOpened={isPublishOpened}
+        movePublishScreen={movePublishScreen}
+        onChange={handleArticleData}
+        createArticle={createArticle}
+      />
     </StyledWrite>
   );
 };
@@ -56,6 +100,7 @@ const StyledWrite = styled.div`
   padding-top: 32px;
   background-color: white;
   overflow: hidden;
+  position: relative;
 `;
 
 const Line = styled.div`

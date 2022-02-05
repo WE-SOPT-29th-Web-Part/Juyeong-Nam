@@ -1,35 +1,41 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import ImageWrapper from "../common/ImageWrapper";
 
-const ArticleCard = ({article}) => {
-  const {id, title, body, summary, series, tags, thumbnail, date} = article;
+const ArticleCard = ({ article }) => {
+  const { title, summary, tags, thumbnail, date } = article;
   return (
-    <Article>
-      {thumbnail === "" ? <></> : <ImgWrapper>
-        <img src={thumbnail} alt="" />
-      </ImgWrapper>}
-      <h3>{title}</h3>
+    <StyledArticleCard>
+      <Link to={`article/${article.id}`} state={article}>
+        {thumbnail && (
+          <ImageWrapper ratio="56%">
+            <img src={thumbnail} alt="" />
+          </ImageWrapper>
+        )}
+        <h3>{title}</h3>
+      </Link>
       <p>{summary}</p>
       {tags.map((tag) => (
         <span key={tag}>{tag}</span>
       ))}
       <Date>{date}</Date>
-    </Article>
+    </StyledArticleCard>
   );
 };
 
 export default ArticleCard;
 
-const Article = styled.article`
+const StyledArticleCard = styled.article`
   border-bottom: 1px solid rgb(233, 236, 239);
   padding: 64px 0 64px 0;
   width: 768px;
-  p{
+  p {
     margin: 8px 0 32px 0;
     font-size: 1rem;
     color: rgb(73, 80, 87);
   }
-  span{
+  span {
     margin-bottom: 0.875rem;
     background: rgb(241, 243, 245);
     padding-left: 1rem;
@@ -45,16 +51,13 @@ const Article = styled.article`
     font-weight: 500;
     font-size: 1rem;
   }
-`;
-
-const ImgWrapper = styled.div`
-  height: 402px;
-  width: 100%;
-  margin-bottom: 16px;
-  img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  a {
+    text-decoration: none;
+  }
+  a:active,
+  a:visited,
+  a:link {
+    color: #22262b;
   }
 `;
 
