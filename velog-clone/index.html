@@ -9,14 +9,18 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
   </head>
   <body>
     <header class="header">
       <div class="header__title">velog</div>
       <div class="header__nav">
+        <label class="header__dark-mode-button">
+          <input type="checkbox" /> <span class="onoff-switch"></span>
+        </label>
         <button class="header__search material-icons outlined">search</button>
-        <button class="header__add-post">새 글 작성</button>
+        <a class="header__add-post" href="write.html">새 글 작성</a>
         <div class="header__profile">
           <button class="header__profile">
             <img src="img/profile.png" alt="" />
@@ -39,6 +43,12 @@
           <span>이번 주</span>
           <span class="material-icons outlined"> expand_more </span>
         </button>
+        <ul class="nav__dropdown">
+          <li class="nav__dropdown-today">오늘</li>
+          <li class="nav__dropdown-week active">이번 주</li>
+          <li class="nav__dropdown-month">이번 달</li>
+          <li class="nav__dropdown-year">올해</li>
+        </ul>
       </div>
       <button class="nav__more material-icons outlined">more_vert</button>
     </nav>
